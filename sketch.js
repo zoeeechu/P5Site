@@ -1,8 +1,11 @@
 var canvas
 let selectedFile
-let img 
-let url 
 let obj
+
+const dots = [];
+const border = 20;
+let white
+
 //when p5 detects that the window has been resized update Canvas Height and Width
 function windowResized()
 {
@@ -12,30 +15,91 @@ function windowResized()
 
 function setup() {
 
+  
     canvas = createCanvas(windowWidth, windowHeight);
     canvas.position(0,0)
     canvas.style('z-index', '-1');
-    /*loadImage('./src/Asset1.png', img => {
-        image(img, 0, 0);
-        image.style('z-index', '0');
-      });
-  */
-      selectedFile = document.getElementById('star');
-      console.log(selectedFile)
-      img = selectedFile.src;
-      console.log(img)
+    obj = loadImage("https://i.imgur.com/w4MKMl3.png");  
 
-  //  url = URL.createObjectURL(img);
-    obj = loadImage(img);  
+    for (let layer = 1; layer <= 3; layer++) {
+        for (let i = 0; i < 200; i++) {
+          dots.push(new Dot(layer));
+        }
+      }
 
-  }
-  
+}
+
+
   function draw() {
 
-    background('#3F1B35');
+   background(63, 27, 53)
+
+    
+   for (const dot of dots) {
+    dot.draw();
+  }
+
+var galaxy = { 
+    locationX : random(width),
+    locationY : random(height),
+    size : random(5,17)
+  }
+
+ 
+    if(frameCount % 20 == 0){
+        image(obj,galaxy.locationX ,galaxy.locationY, galaxy.size, galaxy.size);    
+    }
+  }
+
+  class Dot {
+    constructor(layer) {
+      this.layer = layer;
+      this.x = random(-border, width + border);
+      this.y = random(-border, height + border);
+
+    }
 
 
-/*
+    white = (255,255,255)
+ 
+  
+    draw() {
+      let deltaX = 0;
+      let deltaY = 0;
+  
+      if(mouseX != 0 && mouseY != 0){
+        deltaX = -this.layer *
+          map(mouseX - width / 2, 0, width, 0, 5);
+        deltaY = -this.layer *
+          map(mouseY - height / 2, 0, height, 0, 5);
+      }
+  
+      this.x += deltaX;
+      this.y += deltaY;
+  
+      if (this.x < -border) {
+        this.x = width + random(border);
+        this.y = random(0, height);
+      } else if (this.x > width + border) {
+        this.x = 0 - random(border);
+        this.y = random(0, height);
+      }
+  
+      if (this.y < -border) {
+       this.y = height + random(border);
+        this.x = random(0, width);
+      } else if (this.y > height + border) {
+        this.y = 0 - random(border);
+        this.x = random(0, width);
+      }
+  
+      fill(white, white, 0,);
+      circle(this.x, this.y, 5 / (1 - this.layer));
+    }
+  }
+
+
+  /*
     stroke('#492440');
     beginShape();
         curveVertex(40,40);
@@ -50,13 +114,3 @@ function setup() {
     line(500, windowHeight + 100, windowWidth + 100, 500);
 
 */
-
-var galaxy = { 
-    locationX : random(width),
-    locationY : random(height),
-    size : random(1,12)
-  }
-
-  obj(galaxy.locationX ,galaxy.locationY, galaxy.size, galaxy.size);
-  
-  }
