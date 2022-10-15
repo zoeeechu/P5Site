@@ -1,6 +1,9 @@
 var canvas
 let selectedFile
+
 let obj
+let cat 
+
 
 const dots = [];
 const border = 20;
@@ -19,7 +22,12 @@ function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
     canvas.position(0,0)
     canvas.style('z-index', '-1');
+
+
     obj = loadImage("https://i.imgur.com/w4MKMl3.png");  
+    cat = loadImage("https://docs.rundeck.com/docs/assets/img/saucer-cat.30aa897b.png");  
+    
+    
 
     for (let layer = 1; layer <= 3; layer++) {
         for (let i = 0; i < 200; i++) {
@@ -29,12 +37,12 @@ function setup() {
 
 }
 
-
   function draw() {
 
    background(63, 27, 53)
 
-    
+   image(cat, 0, 0);
+
    for (const dot of dots) {
     dot.draw();
   }
@@ -61,6 +69,7 @@ var galaxy = {
 
 
     white = (255,255,255)
+   
  
   
     draw() {
@@ -94,6 +103,7 @@ var galaxy = {
       }
   
       fill(white, white, 0,);
+      noStroke();
       circle(this.x, this.y, 5 / (1 - this.layer));
     }
   }

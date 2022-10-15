@@ -1,10 +1,44 @@
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-  .center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+}
 
-  }
+
+.center2 {
+  margin: auto;
+  width: 50%;
+  z-index: 5;
+
+}
+
+
+.plnt1 {
+  display: block;
+  transform: translate(20%, -40%);
+}
+
+.plnt2 {
+  display: block;
+  transform: translate(750%, 230%);
+}
+
+.plnt3 {
+  display: block;
+  transform: translate(35%, 100%);
+}
+
+
+
+
+.body {
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+
+
