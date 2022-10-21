@@ -2,9 +2,8 @@ var canvas
 let selectedFile
 
 let obj
-let cat 
 
-
+//https://happycoding.io/examples/p5js/creating-classes/parallax-dots
 const dots = [];
 const border = 20;
 let white
@@ -25,7 +24,6 @@ function setup() {
 
 
     obj = loadImage("https://i.imgur.com/w4MKMl3.png");  
-    cat = loadImage("https://docs.rundeck.com/docs/assets/img/saucer-cat.30aa897b.png");  
     
     
 
@@ -41,7 +39,6 @@ function setup() {
 
    background(63, 27, 53)
 
-   image(cat, 0, 0);
 
    for (const dot of dots) {
     dot.draw();
